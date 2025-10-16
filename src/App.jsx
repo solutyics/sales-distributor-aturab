@@ -7,7 +7,7 @@ import Products from "./Pages/Products";
 import Distributors from "./Pages/Distributors";
 import Customers from "./Pages/Customers";
 import Salesman from "./Pages/Salesman"
-import Assignments from "./Pages/Assignments"
+// import Assignments from "./Pages/Assignments";
 import Settings from "./Pages/Settings";
 import CustomToaster from "./Components/CustomeToaster";
 
@@ -24,7 +24,7 @@ function App() {
             <Route path="/distributors" element={<Distributors />} />
             <Route path="/customers" element={<Customers />} />
             <Route path="/salesmen" element={<Salesman />} />
-            <Route path="/assignments" element={<Assignments />} />
+            {/* <Route path="/assignments" element={<Assignments />} /> */}
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </main>

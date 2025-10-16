@@ -90,14 +90,14 @@ const Navbar = () => {
           Salesmen
         </NavLink>
 
-        <NavLink
+        {/* <NavLink
           to="/assignments"
           className={({ isActive }) =>
             `${linkClass} ${isActive ? activeClass : ""}`
           }
         >
           Assignments
-        </NavLink>
+        </NavLink> */}
 
         <NavLink
           to="/settings"

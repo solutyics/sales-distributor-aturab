@@ -295,7 +295,6 @@ const handleExportCSV = () => {
         </div>
       </motion.div>
 
-      {/* ─── Table ───────────── */}
 {/* ─── Table ───────────── */}
 <motion.div
   className="bg-gray-900/60 border border-gray-800 rounded-xl overflow-x-auto shadow-lg"
@@ -311,7 +310,7 @@ const handleExportCSV = () => {
         <th className="p-3 text-left">City</th>
         <th className="p-3 text-left">Region</th>
         <th className="p-3 text-center">Tier</th>
-        <th className="p-3 text-center">Assigned Salesman</th> {/* ✅ New Column */}
+        <th className="p-3 text-center">Assigned Salesman</th> {/* New Column */}
         <th className="p-3 text-center">Status</th>
         <th className="p-3 text-center">Actions</th>
       </tr>
@@ -336,7 +335,7 @@ const handleExportCSV = () => {
               </td>
               <td className="p-3 text-center text-gray-300">
                 {assignedSalesman}
-              </td> {/* ✅ New Cell */}
+              </td>
               <td className="p-3 text-center">
                 <div className="inline-flex items-center gap-2 justify-center">
                   <span
