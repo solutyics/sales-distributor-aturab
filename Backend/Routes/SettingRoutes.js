@@ -6,4 +6,6 @@ const { getSettings, saveSettings } = require("../Controllers/SettingController"
 router.get("/", getSettings);
 router.post("/", saveSettings);
 
+
+
 module.exports = router;
