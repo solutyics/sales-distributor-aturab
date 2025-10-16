@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaPlus, FaDownload, FaSearch, FaEdit, FaTrash, FaEye } from "react-icons/fa";
 import toast from "react-hot-toast";
+import { saveAs } from "file-saver";
 import {
   getSalesmenApi,
   addSalesmanApi,
@@ -176,6 +177,48 @@ const saveAssignments = async () => {
   }
 };
 
+
+// ----------CSV FIle Handler--------
+const handleExportSalesmenCSV = () => {
+  if (salesmen.length === 0) {
+    toast.error("No salesmen available to export!");
+    return;
+  }
+
+  // Define CSV headers
+  const headers = [
+    "Serial No",
+    "Salesman Name",
+    "Region",
+    "Email",
+    "Distros", 
+    "Custs", 
+    "Status"
+  ];
+
+  // Build CSV rows
+  const rows = salesmen.map((s, index) => {
+    return [
+      index + 1,
+      `"${s.Salesman_name || ""}"`,
+      `"${s.Salesman_region || ""}"`,
+      `"${s.Salesman_email || ""}"`,
+      `"${s.Salesman_distros ?? 0}"`, 
+      `"${s.Salesman_custs ?? 0}"`,  
+      `"${s.Salesman_status || ""}"`,
+    ].join(",");
+  });
+
+  // Combine into CSV
+  const csvContent = [headers.join(","), ...rows].join("\n");
+
+  // Create blob and trigger download
+  const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+  const date = new Date().toISOString().split("T")[0];
+  saveAs(blob, `salesmen_${date}.csv`);
+
+  toast.success("Salesmen data exported successfully!");
+};
 
 
   // ─── Fetch All Salesmen ─────────────
@@ -356,9 +399,12 @@ try {
       <FaPlus /> New Salesman
     </button>
 
-    <button className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md font-medium transition">
-      <FaDownload /> Import ⤓
-    </button>
+<button
+  onClick={handleExportSalesmenCSV}
+  className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 px-4 py-2 rounded-md font-medium"
+>
+  <FaDownload /> Import ⤓
+</button>
   </div>
 </motion.div>
 
